@@ -2,14 +2,15 @@ extends CharacterBody3D
 
 @export var speed: float = 5.0
 @export var jump_velocity: float = 4.5
+@export var mouse_sensitivity: float = 0.003
 
 const GRAVITY: float = 9.8
 
-func _ready():
-	print("Player spawned!")
-	
-func _process(delta: float):
-	pass
+func _input(event: InputEvent):
+	if event is InputEventMouseMotion and Input.is_action_pressed("camera_rotate"):
+		$CameraPivot.rotation.y -= event.relative.x * mouse_sensitivity
+		$CameraPivot.rotation.x -= event.relative.y * mouse_sensitivity
+		$CameraPivot.rotation.x = clamp($CameraPivot.rotation.x, deg_to_rad(-60), deg_to_rad(20))
 
 func _physics_process(delta: float):
 	if not is_on_floor():
@@ -18,20 +19,29 @@ func _physics_process(delta: float):
 	if is_on_floor() and Input.is_action_just_pressed("ui_accept"):
 		velocity.y = jump_velocity
 
-	var direction := Vector3.ZERO
+	var input_dir := Vector2.ZERO
 	if Input.is_action_pressed("ui_left"):
-		direction.x -= 1.0
+		input_dir.x -= 1.0
 	if Input.is_action_pressed("ui_right"):
-		direction.x += 1.0
+		input_dir.x += 1.0
 	if Input.is_action_pressed("ui_up"):
-		direction.z -= 1.0
+		input_dir.y -= 1.0
 	if Input.is_action_pressed("ui_down"):
-		direction.z += 1.0
+		input_dir.y += 1.0
 
-	if direction != Vector3.ZERO:
-		direction = direction.normalized()
-
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
+	if input_dir != Vector2.ZERO:
+		input_dir = input_dir.normalized()
+		var forward: Vector3 = -$CameraPivot.global_transform.basis.z
+		var right: Vector3 = $CameraPivot.global_transform.basis.x
+		forward.y = 0.0
+		right.y = 0.0
+		forward = forward.normalized()
+		right = right.normalized()
+		var direction: Vector3 = forward * (-input_dir.y) + right * input_dir.x
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+	else:
+		velocity.x = 0.0
+		velocity.z = 0.0
 
 	move_and_slide()

@@ -19,6 +19,13 @@ run/main_scene="res://scenes/world.tscn"
 
 3d/physics_engine="Jolt Physics"
 
+[input]
+
+camera_rotate={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_index":2,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"pressed":false,"canceled":false,"double_click":false)]
+}
+
 [rendering]
 
 rendering_device/driver.windows="d3d12"

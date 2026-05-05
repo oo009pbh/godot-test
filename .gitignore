@@ -13,3 +13,7 @@
 
 # Claude project-local settings
 .claude/
+
+# IDE / environment
+.vscode/
+.python-version
