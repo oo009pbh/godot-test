@@ -6,6 +6,9 @@ extends CharacterBody3D
 
 const GRAVITY: float = 9.8
 
+func _ready():
+	$CameraPivot/SpringArm3D.add_excluded_object(get_rid())
+
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion and Input.is_action_pressed("camera_rotate"):
 		$CameraPivot.rotation.y -= event.relative.x * mouse_sensitivity
