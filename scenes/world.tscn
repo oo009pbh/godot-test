@@ -31,15 +31,13 @@ frequency = 0.15
 cellular_return_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture_ground"]
-width = 512
-height = 512
-seamless = true
 noise = SubResource("FastNoiseLite_ground")
+seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
-albedo_color = Color(0.65, 0.60, 0.55, 1)
+albedo_color = Color(0.65, 0.6, 0.55, 1)
 albedo_texture = SubResource("NoiseTexture_ground")
-uv1_scale = Vector3(10.0, 10.0, 1.0)
+uv1_scale = Vector3(10, 10, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1"]
 
@@ -57,7 +55,7 @@ environment = SubResource("Environment_1")
 [node name="Ground" type="StaticBody3D" parent="." unique_id=255749220]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1530023200]
-transform = Transform3D(0.97699183, 0, 0, 0, 0.97699183, 0, 0, 0, 0.97699183, 0.0036656857, 0.004966378, -0.0050940514)
+transform = Transform3D(0.9753103, 0, 0, 0, 0.9753103, 0, 0, 0, 0.9753103, 0.0036656857, 0.004966378, -0.0050940514)
 mesh = SubResource("PlaneMesh_1")
 surface_material_override/0 = SubResource("StandardMaterial3D_ground")
 
