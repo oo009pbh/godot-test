@@ -1,12 +1,11 @@
 extends CharacterBody3D
 
 @export var speed: float = 5.0
-@export var jump_velocity: float = 4.5
+@export var jump_velocity: float = 5.0
 @export var mouse_sensitivity: float = 0.003
 
-const GRAVITY: float = 9.8
-
 func _ready():
+	add_to_group("player")
 	$CameraPivot/SpringArm3D.add_excluded_object(get_rid())
 
 func _input(event: InputEvent):
@@ -17,19 +16,19 @@ func _input(event: InputEvent):
 
 func _physics_process(delta: float):
 	if not is_on_floor():
-		velocity.y -= GRAVITY * delta
+		velocity += get_gravity() * delta
 
-	if is_on_floor() and Input.is_action_just_pressed("ui_accept"):
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
 
 	var input_dir := Vector2.ZERO
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
 		input_dir.x -= 1.0
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		input_dir.x += 1.0
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_forward"):
 		input_dir.y -= 1.0
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_backward"):
 		input_dir.y += 1.0
 
 	if input_dir != Vector2.ZERO:
