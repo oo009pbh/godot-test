@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://debrp7co3733w"]
 
 [ext_resource type="Script" uid="uid://wpg1jb66qvnl" path="res://scripts/player.gd" id="Script_player"]
+[ext_resource type="PackedScene" uid="uid://imahkkpe1q1c" path="res://assets/models/cyber_samurai.glb" id="Model_samurai"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1"]
 radius = 0.4
 height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="Mat_player"]
-albedo_color = Color(0.2, 0.6, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="Shape_player"]
 radius = 0.4
@@ -20,10 +18,12 @@ script = ExtResource("Script_player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_1")
-surface_material_override/0 = SubResource("Mat_player")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("Shape_player")
+
+[node name="CyberSamurai" type="Node3D" parent="." instance=ExtResource("Model_samurai")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -0.7, 0)
 
 [node name="CameraPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)

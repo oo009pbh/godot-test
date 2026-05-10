@@ -4,9 +4,23 @@ extends CharacterBody3D
 @export var jump_velocity: float = 5.0
 @export var mouse_sensitivity: float = 0.003
 
+var _materials: Array[StandardMaterial3D] = []
+
 func _ready():
 	add_to_group("player")
 	$CameraPivot/SpringArm3D.add_excluded_object(get_rid())
+
+	var red := StandardMaterial3D.new()
+	red.albedo_color = Color.RED
+
+	var green := StandardMaterial3D.new()
+	green.albedo_color = Color.GREEN
+
+	var blue := StandardMaterial3D.new()
+	blue.albedo_color = Color.BLUE
+
+	_materials = [red, green, blue]
+	$MeshInstance3D.set_surface_override_material(0, _materials[0])
 
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion and Input.is_action_pressed("camera_rotate"):
@@ -20,6 +34,8 @@ func _physics_process(delta: float):
 
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
+		var random_mat := _materials[randi() % _materials.size()]
+		$MeshInstance3D.set_surface_override_material(0, random_mat)
 
 	var input_dir := Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
