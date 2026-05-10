@@ -1,3 +1,6 @@
+# Large binary assets (too big for GitHub — manage separately or use Git LFS)
+assets/
+
 # Godot 4 generated files
 .godot/
 *.translation
