@@ -37,7 +37,8 @@ func _input(event: InputEvent):
 		$CameraPivot.rotation.x -= event.relative.y * mouse_sensitivity
 		$CameraPivot.rotation.x = clamp($CameraPivot.rotation.x, deg_to_rad(-60), deg_to_rad(20))
 	if event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed:
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		get_tree().paused = not get_tree().paused
+		if get_tree().paused:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
