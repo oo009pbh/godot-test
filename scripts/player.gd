@@ -11,6 +11,11 @@ var _state: State = State.IDLE
 var _materials: Array[StandardMaterial3D] = []
 var _jumps_remaining: int = 0
 
+signal health_changed(new_health: int)
+
+@export var max_health: int = 100
+var _health: int = 100
+
 func _ready():
 	add_to_group("player")
 	$CameraPivot/SpringArm3D.add_excluded_object(get_rid())
@@ -109,6 +114,12 @@ func _apply_movement(delta: float) -> void:
 	var old_y := rotation.y
 	rotation.y = lerp_angle(rotation.y, target_angle, 10.0 * delta)
 	$CameraPivot.rotation.y += old_y - rotation.y
+
+func take_damage(amount: int) -> void:
+	_health = max(0, _health - amount)
+	health_changed.emit(_health)
+	if _health <= 0:
+		queue_free()
 
 func _get_input_dir() -> Vector2:
 	var dir := Vector2.ZERO
