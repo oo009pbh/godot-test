@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="새 게임 프로젝트"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -52,6 +52,11 @@ move_run={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194325,"physical_keycode":0,"key_label":0,"unicode":0,"location":1,"echo":false,"script":null)
 ]
 }
+
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
+SceneTransition="*res://scripts/scene_transition.gd"
 
 [physics]
 
