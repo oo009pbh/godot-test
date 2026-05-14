@@ -11,6 +11,9 @@ var score: int = 0
 var health: int = MAX_HEALTH
 var current_level: int = 1
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func add_score(amount: int) -> void:
 	score += amount
 	score_changed.emit(score)
