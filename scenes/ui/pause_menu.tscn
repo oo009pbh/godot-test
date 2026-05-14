@@ -37,27 +37,27 @@ theme_override_font_sizes/font_size = 36
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 52)
+custom_minimum_size = Vector2(200, 52)
 text = "Resume"
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 
 [node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 52)
+custom_minimum_size = Vector2(200, 52)
 text = "Restart"
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 52)
+custom_minimum_size = Vector2(200, 52)
 text = "Main Menu"
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 52)
+custom_minimum_size = Vector2(200, 52)
 text = "Quit"
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

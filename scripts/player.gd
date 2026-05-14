@@ -30,18 +30,11 @@ func _ready():
 	_materials = [red, green, blue]
 	$MeshInstance3D.set_surface_override_material(0, _materials[0])
 
-# 마우스 입력은 상태와 무관하게 항상 처리
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		$CameraPivot.rotation.y -= event.relative.x * mouse_sensitivity
 		$CameraPivot.rotation.x -= event.relative.y * mouse_sensitivity
 		$CameraPivot.rotation.x = clamp($CameraPivot.rotation.x, deg_to_rad(-60), deg_to_rad(20))
-	if event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed:
-		get_tree().paused = not get_tree().paused
-		if get_tree().paused:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float):
 	_update_state()
