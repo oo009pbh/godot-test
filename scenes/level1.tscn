@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/level1.gd" id="Script_level1"]
 [ext_resource type="PackedScene" uid="uid://cybfa5xbuyli8" path="res://scenes/level.tscn" id="Scene_level"]
 [ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="Scene_pause_menu"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="Scene_hud"]
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("Script_level1")
@@ -10,3 +11,5 @@ script = ExtResource("Script_level1")
 [node name="Level" parent="." instance=ExtResource("Scene_level")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("Scene_pause_menu")]
+
+[node name="HUD" parent="." instance=ExtResource("Scene_hud")]
