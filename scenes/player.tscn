@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://debrp7co3733w"]
 
-[ext_resource type="Script" uid="uid://wpg1jb66qvnl" path="res://scripts/player.gd" id="Script_player"]
+[ext_resource type="AudioStream" uid="uid://dapuenycjn10x" path="res://assets/audio/footstep00.ogg" id="2_dqkch"]
+[ext_resource type="AudioStream" uid="uid://b0uj3iy4qpdhj" path="res://assets/audio/impactWood_heavy_004.ogg" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://imahkkpe1q1c" path="res://assets/models/cyber_samurai.glb" id="Model_samurai"]
+[ext_resource type="Script" uid="uid://wpg1jb66qvnl" path="res://scripts/player.gd" id="Script_player"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1"]
 radius = 0.4
@@ -11,25 +13,40 @@ height = 1.8
 radius = 0.4
 height = 1.8
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=146384582 groups=["player"]]
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("Script_player")
+footstep_sound = ExtResource("2_dqkch")
+jump_sound = ExtResource("3_qlg0r")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=157403890]
 mesh = SubResource("CapsuleMesh_1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1888414817]
 shape = SubResource("Shape_player")
 
-[node name="CyberSamurai" type="Node3D" parent="." instance=ExtResource("Model_samurai")]
+[node name="CyberSamurai" parent="." unique_id=430763793 instance=ExtResource("Model_samurai")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -0.7, 0)
 
-[node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1068789189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=777769556]
 spring_length = 4.0
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1463638094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="AttackRay" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D" unique_id=859911894]
+target_position = Vector3(0, 0, -15)
+
+[node name="DamageVignette" type="CanvasLayer" parent="." unique_id=244553971]
+
+[node name="VignetteRect" type="ColorRect" parent="DamageVignette" unique_id=1594249552]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+
+[node name="FootstepPlayer" type="AudioStreamPlayer" parent="." unique_id=2004818729]
