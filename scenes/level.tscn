@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="EnemyScene"]
 [ext_resource type="PackedScene" uid="uid://debrp7co3733w" path="res://scenes/player.tscn" id="PlayerScene"]
+[ext_resource type="PackedScene" path="res://scenes/items/coin.tscn" id="CoinScene"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_floor"]
 size = Vector3(20, 1, 20)
@@ -94,6 +95,15 @@ navigation_mesh = SubResource("NavigationMesh_1")
 
 [node name="Player" parent="." unique_id=317478646 instance=ExtResource("PlayerScene")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Coin1" parent="." instance=ExtResource("CoinScene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.0, -6)
+
+[node name="Coin2" parent="." instance=ExtResource("CoinScene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.0, 5)
+
+[node name="Coin3" parent="." instance=ExtResource("CoinScene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.0, -3)
 
 [node name="Enemy1" parent="." unique_id=539815700 instance=ExtResource("EnemyScene")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -4)

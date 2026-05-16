@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfs3c1nw5qfj8" path="res://scripts/asset_placer.gd" id="3_4wyf3"]
 [ext_resource type="PackedScene" path="res://scenes/items/item_sphere.tscn" id="ItemScene"]
+[ext_resource type="PackedScene" path="res://scenes/items/coin.tscn" id="CoinScene"]
 [ext_resource type="PackedScene" uid="uid://debrp7co3733w" path="res://scenes/player.tscn" id="PlayerScene"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
@@ -73,6 +74,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 2)
 
 [node name="Item3" parent="." unique_id=119025101 instance=ExtResource("ItemScene")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -5)
+
+[node name="Coin1" parent="." instance=ExtResource("CoinScene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.0, -2)
+
+[node name="Coin2" parent="." instance=ExtResource("CoinScene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.0, -3)
+
+[node name="Coin3" parent="." instance=ExtResource("CoinScene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 4)
 
 [node name="AssetPlacer" type="Node3D" parent="." unique_id=549403108]
 transform = Transform3D(-1.860121, 0, 0, 0, 0.7139735, 0, 0, 0, 1, 0, 0, 0)
