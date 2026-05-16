@@ -6,4 +6,4 @@ func _ready() -> void:
 
 func _on_retry_button_pressed() -> void:
 	GameManager.reset()
-	SceneTransition.change_scene("res://scenes/level1.tscn")
+	TransitionManager.transition_to("res://scenes/level1.tscn")

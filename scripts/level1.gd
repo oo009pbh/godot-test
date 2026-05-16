@@ -8,4 +8,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		GameManager.take_damage(20)
 
 func _on_game_over() -> void:
-	SceneTransition.change_scene("res://scenes/ui/game_over.tscn")
+	TransitionManager.transition_to("res://scenes/ui/game_over.tscn")

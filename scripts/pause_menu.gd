@@ -14,14 +14,17 @@ func _on_resume_button_pressed() -> void:
 	hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func _on_save_button_pressed() -> void:
+	SaveManager.save()
+
 func _on_restart_button_pressed() -> void:
 	get_tree().paused = false
 	GameManager.reset()
-	SceneTransition.change_scene("res://scenes/level1.tscn")
+	TransitionManager.transition_to("res://scenes/level1.tscn")
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().paused = false
-	SceneTransition.change_scene("res://scenes/ui/main_menu.tscn")
+	TransitionManager.transition_to("res://scenes/ui/main_menu.tscn")
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
