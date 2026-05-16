@@ -39,4 +39,11 @@ custom_minimum_size = Vector2(0, 60)
 text = "Start Game"
 theme_override_font_sizes/font_size = 24
 
+[node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 60)
+text = "Continue"
+theme_override_font_sizes/font_size = 24
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
