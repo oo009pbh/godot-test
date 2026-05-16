@@ -6,6 +6,7 @@ signal game_over
 signal level_changed(new_level: int)
 
 const MAX_HEALTH: int = 100
+const ExplosionScene: PackedScene = preload("res://scenes/effects/explosion.tscn")
 
 var score: int = 0
 var health: int = MAX_HEALTH
@@ -39,3 +40,8 @@ func reset() -> void:
 	score_changed.emit(score)
 	health_changed.emit(health)
 	level_changed.emit(current_level)
+
+func spawn_explosion(at_position: Vector3) -> void:
+	var explosion := ExplosionScene.instantiate()
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = at_position

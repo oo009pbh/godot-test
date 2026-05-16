@@ -104,6 +104,7 @@ func take_damage(_amount: int) -> void:
 		return
 	_state = State.DEAD
 	set_physics_process(false)
+	GameManager.spawn_explosion(global_position)
 	queue_free()
 
 func _can_see_player() -> bool:
