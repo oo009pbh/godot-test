@@ -26,9 +26,9 @@ scenes/
 const EnemyScene = preload("res://scenes/enemy.tscn")
 
 func spawn_enemy():
-    var enemy = EnemyScene.instantiate()  # 인스턴스 생성
-    add_child(enemy)                       # 씬 트리에 추가
-    enemy.position = Vector3(5, 0, 0)
+	var enemy = EnemyScene.instantiate()  # 인스턴스 생성
+	add_child(enemy)                       # 씬 트리에 추가
+	enemy.position = Vector3(5, 0, 0)
 ```
 
 **핵심:** 씬 파일(`.tscn`)은 "재사용 가능한 노드 묶음"이다. 다른 씬에서 import처럼 가져다 쓸 수 있다.
@@ -43,8 +43,8 @@ func spawn_enemy():
 extends CharacterBody3D  # 이 스크립트는 CharacterBody3D 노드다
 
 func _physics_process(delta):
-    velocity.y -= 9.8 * delta  # velocity = 이 노드(Player)의 velocity
-    move_and_slide()            # 이 노드를 이동시키는 함수
+	velocity.y -= 9.8 * delta  # velocity = 이 노드(Player)의 velocity
+	move_and_slide()            # 이 노드를 이동시키는 함수
 ```
 
 - `velocity`, `position`, `rotation` 같은 속성들은 **이 노드의 속성**
@@ -73,8 +73,8 @@ Godot의 이벤트 전파는 크게 세 가지 방식이 있다:
 $TrapArea.body_entered.connect(_on_trap_entered)
 
 func _on_trap_entered(body):
-    if body.name == "Player":
-        body.take_damage(10)
+	if body.name == "Player":
+		body.take_damage(10)
 ```
 
 Signal은 이벤트 리스너 패턴이다. DOM의 `addEventListener`와 동일한 개념.
@@ -122,12 +122,12 @@ class_name Enemy extends CharacterBody3D
 var health: int = 100
 
 func take_damage(amount: int):
-    health -= amount
-    if health <= 0:
-        die()
+	health -= amount
+	if health <= 0:
+		die()
 
 func die():
-    queue_free()  # 노드 삭제
+	queue_free()  # 노드 삭제
 ```
 
 `class_name`을 선언하면 다른 스크립트에서 타입으로 쓸 수 있다.
