@@ -1,6 +1,14 @@
 # Large binary assets (too big for GitHub — manage separately or use Git LFS)
 assets/
 
+# Build outputs
+builds/mac/
+builds/windows/
+builds/linux/
+builds/web/
+builds/ios/
+builds/android/
+
 # Godot 4 generated files
 .godot/
 *.translation

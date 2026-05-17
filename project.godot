@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="새 게임 프로젝트"
+config/name="test_game"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
@@ -68,3 +68,4 @@ move_run={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true
