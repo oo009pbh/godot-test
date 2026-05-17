@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="test_game"
+config/name="My 3D Game"
+config/version="1.0.0"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
@@ -22,6 +23,12 @@ SceneTransition="*res://scripts/scene_transition.gd"
 AudioManager="*res://scripts/audio_manager.gd"
 SaveManager="*res://scripts/save_manager.gd"
 TransitionManager="*res://scripts/transition_manager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 
 [input]
 
